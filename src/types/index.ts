@@ -1,11 +1,14 @@
-export interface SignWord {
-  id: string
+export type KSLCategory = 'greeting' | 'question' | 'verb' | 'person' | 'time' | 'object'
+
+export interface KSLDictionaryEntry {
   word: string
-  videoUrl: string
-  category: 'greeting' | 'question' | 'verb' | 'person' | 'time' | 'object'
+  videoFile: string
+  category: KSLCategory
+  alternativeForms: string[]
 }
 
-export interface TranslationResult {
-  words: SignWord[]
-  notFound: string[]
+export interface LookupResult {
+  matchedEntries: KSLDictionaryEntry[]
+  videoFiles: string[]
+  missingWords: string[]
 }

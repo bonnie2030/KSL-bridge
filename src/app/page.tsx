@@ -2,34 +2,80 @@
 
 import { useState } from 'react'
 import VideoPlayer from '@/components/VideoPlayer'
-import { translateText } from '@/lib/vocabulary'
-import type { SignWord } from '@/types'
+import { lookupWords } from '@/lib/vocabulary'
+import type { KSLDictionaryEntry } from '@/types'
+
+const TEST_SENTENCES = [
+  'hello thank you',
+  'I want water please',
+  'where is the food',
+  'help me understand',
+]
 
 export default function Home() {
   const [inputText, setInputText] = useState('')
-  const [translatedVideos, setTranslatedVideos] = useState<SignWord[]>([])
+  const [translatedVideos, setTranslatedVideos] = useState<KSLDictionaryEntry[]>([])
+  const [videoSequence, setVideoSequence] = useState<string[]>([])
+  const [activeVideoIndex, setActiveVideoIndex] = useState(0)
   const [notFoundWords, setNotFoundWords] = useState<string[]>([])
+  const [inputError, setInputError] = useState('')
+  const [copyStatus, setCopyStatus] = useState<'idle' | 'copied' | 'failed'>('idle')
   const [hasTranslated, setHasTranslated] = useState(false)
 
   const handleTranslate = () => {
     if (!inputText.trim()) {
       setTranslatedVideos([])
+      setVideoSequence([])
       setNotFoundWords([])
+      setInputError('Please enter a sentence before translating.')
       setHasTranslated(false)
       return
     }
 
-    const { found, notFound } = translateText(inputText)
-    setTranslatedVideos(found)
-    setNotFoundWords(notFound)
+    const { matchedEntries, videoFiles, missingWords } = lookupWords(inputText)
+    setTranslatedVideos(matchedEntries)
+    setVideoSequence(videoFiles)
+    setActiveVideoIndex(0)
+    setNotFoundWords(missingWords)
+    setInputError('')
     setHasTranslated(true)
   }
 
   const handleClear = () => {
     setInputText('')
     setTranslatedVideos([])
+    setVideoSequence([])
     setNotFoundWords([])
+    setInputError('')
+    setCopyStatus('idle')
     setHasTranslated(false)
+  }
+
+  const handleRunExample = (sentence: string) => {
+    const { matchedEntries, videoFiles, missingWords } = lookupWords(sentence)
+    setInputText(sentence)
+    setTranslatedVideos(matchedEntries)
+    setVideoSequence(videoFiles)
+    setActiveVideoIndex(0)
+    setNotFoundWords(missingWords)
+    setInputError('')
+    setCopyStatus('idle')
+    setHasTranslated(true)
+  }
+
+  const handleCopySequence = async () => {
+    if (videoSequence.length === 0) return
+
+    try {
+      await navigator.clipboard.writeText(videoSequence.join(' -> '))
+      setCopyStatus('copied')
+    } catch {
+      setCopyStatus('failed')
+    }
+
+    setTimeout(() => {
+      setCopyStatus('idle')
+    }, 2000)
   }
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -86,6 +132,29 @@ export default function Home() {
               <p className="text-xs text-gray-400 mt-3 font-medium">
                 💡 Tip: Press <kbd className="bg-purple-500/30 px-2 py-1 rounded border border-purple-400 text-purple-200">Ctrl+Enter</kbd> to translate
               </p>
+
+              {inputError && (
+                <div className="mt-4 p-3 bg-red-500/20 border border-red-400/50 rounded-lg">
+                  <p className="text-sm font-medium text-red-200">⚠️ {inputError}</p>
+                </div>
+              )}
+
+              <div className="mt-5">
+                <p className="text-xs text-gray-400 font-semibold uppercase tracking-wide mb-3">
+                  Try example sentences
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {TEST_SENTENCES.map((sentence) => (
+                    <button
+                      key={sentence}
+                      onClick={() => handleRunExample(sentence)}
+                      className="text-left px-3 py-2 bg-slate-800/50 border border-slate-600/60 rounded-lg text-xs text-gray-200 hover:border-cyan-400/60 hover:bg-slate-700/60 transition-all duration-200"
+                    >
+                      {sentence}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* Buttons */}
@@ -113,8 +182,51 @@ export default function Home() {
                   🎥 Sign Language Video
                 </h2>
                 <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-                  <VideoPlayer videos={translatedVideos} />
+                  <VideoPlayer
+                    videos={videoSequence}
+                    labels={translatedVideos.map((entry) => entry.word)}
+                    onCurrentIndexChange={setActiveVideoIndex}
+                    showOverlayText
+                  />
                 </div>
+
+                {translatedVideos.length > 0 && (
+                  <div className="mt-6">
+                    <p className="text-sm font-bold text-purple-200 mb-3">📌 Current playback word</p>
+                    <div className="flex flex-wrap gap-2">
+                      {translatedVideos.map((entry, index) => {
+                        const isActive = index === activeVideoIndex
+                        return (
+                          <span
+                            key={`${entry.word}-${index}`}
+                            className={`px-3 py-1.5 text-xs rounded-full border transition-all duration-200 ${
+                              isActive
+                                ? 'bg-cyan-500/30 border-cyan-300 text-cyan-100'
+                                : 'bg-slate-800/60 border-slate-600 text-slate-300'
+                            }`}
+                          >
+                            {entry.word}
+                          </span>
+                        )
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {videoSequence.length > 0 && (
+                  <div className="mt-6 p-4 bg-cyan-500/10 border border-cyan-400/40 rounded-xl backdrop-blur-sm">
+                    <div className="flex items-center justify-between gap-3 mb-2">
+                      <p className="text-sm font-bold text-cyan-200">🎞️ Video sequence:</p>
+                      <button
+                        onClick={handleCopySequence}
+                        className="px-3 py-1 text-xs font-semibold rounded-md border border-cyan-400/50 text-cyan-100 hover:bg-cyan-500/20 transition-all duration-200"
+                      >
+                        {copyStatus === 'copied' ? 'Copied!' : copyStatus === 'failed' ? 'Copy failed' : 'Copy'}
+                      </button>
+                    </div>
+                    <p className="text-sm text-cyan-100 font-mono break-words">{videoSequence.join(' → ')}</p>
+                  </div>
+                )}
 
                 {/* Messages for not found words */}
                 {notFoundWords.length > 0 && (
@@ -144,7 +256,7 @@ export default function Home() {
                 <div className="text-center">
                   <div className="text-6xl mb-4">👋</div>
                   <p className="text-gray-300 text-lg font-medium">
-                    Enter text and click <span className="text-cyan-200 font-bold">"Translate"</span>
+                    Enter text and click <span className="text-cyan-200 font-bold">&quot;Translate&quot;</span>
                   </p>
                   <p className="text-gray-400 text-sm mt-2">to see sign language videos</p>
                 </div>

@@ -1,0 +1,302 @@
+[
+  {
+    "word": "hello",
+    "videoFile": "hello.mp4",
+    "category": "greeting",
+    "alternativeForms": ["hi", "hey", "hello"]
+  },
+  {
+    "word": "thank you",
+    "videoFile": "thank-you.mp4",
+    "category": "greeting",
+    "alternativeForms": ["thanks", "thank", "thankyou", "thank you"]
+  },
+  {
+    "word": "please",
+    "videoFile": "please.mp4",
+    "category": "greeting",
+    "alternativeForms": ["please", "kindly"]
+  },
+  {
+    "word": "sorry",
+    "videoFile": "sorry.mp4",
+    "category": "greeting",
+    "alternativeForms": ["sorry", "apologies", "pardon"]
+  },
+  {
+    "word": "yes",
+    "videoFile": "yes.mp4",
+    "category": "greeting",
+    "alternativeForms": ["yes", "yeah", "yep"]
+  },
+  {
+    "word": "no",
+    "videoFile": "no.mp4",
+    "category": "greeting",
+    "alternativeForms": ["no", "nope"]
+  },
+  {
+    "word": "good morning",
+    "videoFile": "good-morning.mp4",
+    "category": "greeting",
+    "alternativeForms": ["morning", "good morning"]
+  },
+  {
+    "word": "good afternoon",
+    "videoFile": "good-afternoon.mp4",
+    "category": "greeting",
+    "alternativeForms": ["afternoon", "good afternoon"]
+  },
+  {
+    "word": "good evening",
+    "videoFile": "good-evening.mp4",
+    "category": "greeting",
+    "alternativeForms": ["evening", "good evening"]
+  },
+  {
+    "word": "goodbye",
+    "videoFile": "goodbye.mp4",
+    "category": "greeting",
+    "alternativeForms": ["bye", "goodbye", "see you"]
+  },
+  {
+    "word": "what",
+    "videoFile": "what.mp4",
+    "category": "question",
+    "alternativeForms": ["what"]
+  },
+  {
+    "word": "where",
+    "videoFile": "where.mp4",
+    "category": "question",
+    "alternativeForms": ["where"]
+  },
+  {
+    "word": "when",
+    "videoFile": "when.mp4",
+    "category": "question",
+    "alternativeForms": ["when"]
+  },
+  {
+    "word": "why",
+    "videoFile": "why.mp4",
+    "category": "question",
+    "alternativeForms": ["why"]
+  },
+  {
+    "word": "who",
+    "videoFile": "who.mp4",
+    "category": "question",
+    "alternativeForms": ["who"]
+  },
+  {
+    "word": "how",
+    "videoFile": "how.mp4",
+    "category": "question",
+    "alternativeForms": ["how"]
+  },
+  {
+    "word": "how much",
+    "videoFile": "how-much.mp4",
+    "category": "question",
+    "alternativeForms": ["how much"]
+  },
+  {
+    "word": "how many",
+    "videoFile": "how-many.mp4",
+    "category": "question",
+    "alternativeForms": ["how many"]
+  },
+  {
+    "word": "want",
+    "videoFile": "want.mp4",
+    "category": "verb",
+    "alternativeForms": ["want", "wants", "wanted"]
+  },
+  {
+    "word": "need",
+    "videoFile": "need.mp4",
+    "category": "verb",
+    "alternativeForms": ["need", "needs", "needed"]
+  },
+  {
+    "word": "have",
+    "videoFile": "have.mp4",
+    "category": "verb",
+    "alternativeForms": ["have", "has", "had"]
+  },
+  {
+    "word": "go",
+    "videoFile": "go.mp4",
+    "category": "verb",
+    "alternativeForms": ["go", "going", "went"]
+  },
+  {
+    "word": "come",
+    "videoFile": "come.mp4",
+    "category": "verb",
+    "alternativeForms": ["come", "comes", "came"]
+  },
+  {
+    "word": "eat",
+    "videoFile": "eat.mp4",
+    "category": "verb",
+    "alternativeForms": ["eat", "eats", "ate", "eating"]
+  },
+  {
+    "word": "drink",
+    "videoFile": "drink.mp4",
+    "category": "verb",
+    "alternativeForms": ["drink", "drinks", "drank", "drinking"]
+  },
+  {
+    "word": "sleep",
+    "videoFile": "sleep.mp4",
+    "category": "verb",
+    "alternativeForms": ["sleep", "sleeps", "slept"]
+  },
+  {
+    "word": "help",
+    "videoFile": "help.mp4",
+    "category": "verb",
+    "alternativeForms": ["help", "helps", "helping"]
+  },
+  {
+    "word": "understand",
+    "videoFile": "understand.mp4",
+    "category": "verb",
+    "alternativeForms": ["understand", "understands", "understood"]
+  },
+  {
+    "word": "learn",
+    "videoFile": "learn.mp4",
+    "category": "verb",
+    "alternativeForms": ["learn", "learns", "learning", "learned", "learnt"]
+  },
+  {
+    "word": "work",
+    "videoFile": "work.mp4",
+    "category": "verb",
+    "alternativeForms": ["work", "works", "working", "worked"]
+  },
+  {
+    "word": "i",
+    "videoFile": "i.mp4",
+    "category": "person",
+    "alternativeForms": ["i", "me", "myself", "mine", "my"]
+  },
+  {
+    "word": "you",
+    "videoFile": "you.mp4",
+    "category": "person",
+    "alternativeForms": ["you", "your", "yours", "yourself"]
+  },
+  {
+    "word": "he",
+    "videoFile": "he.mp4",
+    "category": "person",
+    "alternativeForms": ["he", "him", "his", "himself"]
+  },
+  {
+    "word": "she",
+    "videoFile": "she.mp4",
+    "category": "person",
+    "alternativeForms": ["she", "her", "hers", "herself"]
+  },
+  {
+    "word": "we",
+    "videoFile": "we.mp4",
+    "category": "person",
+    "alternativeForms": ["we", "us", "our", "ours", "ourselves"]
+  },
+  {
+    "word": "they",
+    "videoFile": "they.mp4",
+    "category": "person",
+    "alternativeForms": ["they", "them", "their", "theirs", "themselves"]
+  },
+  {
+    "word": "now",
+    "videoFile": "now.mp4",
+    "category": "time",
+    "alternativeForms": ["now", "right now"]
+  },
+  {
+    "word": "later",
+    "videoFile": "later.mp4",
+    "category": "time",
+    "alternativeForms": ["later", "after"]
+  },
+  {
+    "word": "today",
+    "videoFile": "today.mp4",
+    "category": "time",
+    "alternativeForms": ["today"]
+  },
+  {
+    "word": "tomorrow",
+    "videoFile": "tomorrow.mp4",
+    "category": "time",
+    "alternativeForms": ["tomorrow"]
+  },
+  {
+    "word": "yesterday",
+    "videoFile": "yesterday.mp4",
+    "category": "time",
+    "alternativeForms": ["yesterday"]
+  },
+  {
+    "word": "always",
+    "videoFile": "always.mp4",
+    "category": "time",
+    "alternativeForms": ["always"]
+  },
+  {
+    "word": "water",
+    "videoFile": "water.mp4",
+    "category": "object",
+    "alternativeForms": ["water"]
+  },
+  {
+    "word": "food",
+    "videoFile": "food.mp4",
+    "category": "object",
+    "alternativeForms": ["food", "meal"]
+  },
+  {
+    "word": "house",
+    "videoFile": "house.mp4",
+    "category": "object",
+    "alternativeForms": ["house", "home"]
+  },
+  {
+    "word": "car",
+    "videoFile": "car.mp4",
+    "category": "object",
+    "alternativeForms": ["car", "vehicle"]
+  },
+  {
+    "word": "phone",
+    "videoFile": "phone.mp4",
+    "category": "object",
+    "alternativeForms": ["phone", "mobile", "cellphone"]
+  },
+  {
+    "word": "book",
+    "videoFile": "book.mp4",
+    "category": "object",
+    "alternativeForms": ["book", "textbook"]
+  },
+  {
+    "word": "money",
+    "videoFile": "money.mp4",
+    "category": "object",
+    "alternativeForms": ["money", "cash"]
+  },
+  {
+    "word": "clothes",
+    "videoFile": "clothes.mp4",
+    "category": "object",
+    "alternativeForms": ["clothes", "clothing", "dress", "wear"]
+  }
+]

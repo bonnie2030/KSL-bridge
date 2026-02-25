@@ -82,6 +82,7 @@ water, food, house, car, phone, book, money, clothes
 - `npm run build` - Build for production
 - `npm start` - Start production server
 - `npm run lint` - Run ESLint
+- `npm run generate:videos` - Generate 50 placeholder MP4 clips
 
 ### Technologies
 
@@ -97,6 +98,12 @@ Currently uses placeholder video paths. To integrate real KSL videos:
 1. Create a `public/videos/` directory
 2. Add video files for each word (e.g., `hello.mp4`, `thank-you.mp4`)
 3. The app will automatically pull the correct videos based on the vocabulary mapping
+
+You can auto-generate local placeholder clips by running:
+
+```bash
+npm run generate:videos
+```
 
 ## Phase 1 Deliverables
 
